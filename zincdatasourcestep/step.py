@@ -39,7 +39,7 @@ class ZincDataSourceStep(WorkflowStepMountPoint):
         self._state = ZincDataData()
         
     def configure(self):
-        d = ConfigureDialog(self._state)
+        d = ConfigureDialog(self._state, self._main_window)
         d.setModal(True)
         if d.exec_():
             self._state = d.getState()
