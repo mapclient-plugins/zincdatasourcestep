@@ -27,6 +27,7 @@ from zincdatasourcestep.zincdatadata import ZincDataData
 REQUIRED_STYLE_SHEET = 'border: 1px solid red; border-radius: 3px'
 DEFAULT_STYLE_SHEET = ''
 
+
 class ConfigureDialog(QDialog):
     '''
     Configure dialog to present the user with the options to configure this step.
@@ -87,4 +88,3 @@ class ConfigureDialog(QDialog):
             self._ui.dataLineEdit.setText(fileName)
 
         self.validate()
-

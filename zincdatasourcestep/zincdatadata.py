@@ -18,12 +18,12 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
     along with MAP Client.  If not, see <http://www.gnu.org/licenses/>..
 '''
 
+
 class ZincDataData(object):
-    
+
     def __init__(self):
         self._identifier = ''
         self._dataLocation = ''
-        
+
     def dataFile(self):
         return self._dataLocation
-    
