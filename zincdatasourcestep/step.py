@@ -19,7 +19,7 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 '''
 import os
 
-from PySide import QtGui, QtCore
+from PySide2 import QtGui, QtCore
 
 from mountpoints.workflowstep import WorkflowStepMountPoint
 
