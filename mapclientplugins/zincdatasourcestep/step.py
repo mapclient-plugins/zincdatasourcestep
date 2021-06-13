@@ -21,10 +21,10 @@ import os
 
 from PySide2 import QtGui, QtCore
 
-from mountpoints.workflowstep import WorkflowStepMountPoint
+from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 
-from zincdatasourcestep.widgets.configuredialog import ConfigureDialog
-from zincdatasourcestep.zincdatadata import ZincDataData
+from mapclientplugins.zincdatasourcestep.widgets.configuredialog import ConfigureDialog
+from mapclientplugins.zincdatasourcestep.zincdatadata import ZincDataData
 
 
 class ZincDataSourceStep(WorkflowStepMountPoint):
