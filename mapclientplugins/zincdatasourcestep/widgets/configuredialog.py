@@ -21,8 +21,8 @@ import os
 
 from PySide2.QtWidgets import QDialog, QFileDialog, QDialogButtonBox
 
-from zincdatasourcestep.widgets.ui_configuredialog import Ui_ConfigureDialog
-from zincdatasourcestep.zincdatadata import ZincDataData
+from mapclientplugins.zincdatasourcestep.widgets.ui_configuredialog import Ui_ConfigureDialog
+from mapclientplugins.zincdatasourcestep.zincdatadata import ZincDataData
 
 REQUIRED_STYLE_SHEET = 'border: 1px solid red; border-radius: 3px'
 DEFAULT_STYLE_SHEET = ''
