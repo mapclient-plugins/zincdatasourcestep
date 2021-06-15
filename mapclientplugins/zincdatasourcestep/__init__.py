@@ -17,3 +17,9 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
     You should have received a copy of the GNU General Public License
     along with MAP Client.  If not, see <http://www.gnu.org/licenses/>..
 '''
+__version__ = '0.1.0'
+__author__ = 'Hugh Sorby'
+
+# import class that derives itself from the step mountpoint.
+import mapclientplugins.zincdatasourcestep.widgets.resources_rc
+from mapclientplugins.zincdatasourcestep import step
