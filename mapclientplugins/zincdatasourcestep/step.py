@@ -17,9 +17,7 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
     You should have received a copy of the GNU General Public License
     along with MAP Client.  If not, see <http://www.gnu.org/licenses/>..
 '''
-import os
-
-from PySide6 import QtGui, QtCore
+from PySide6 import QtGui
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 
@@ -35,6 +33,7 @@ class ZincDataSourceStep(WorkflowStepMountPoint):
 
     def __init__(self, location):
         super(ZincDataSourceStep, self).__init__('Zinc Data Source', location)
+        self._configured = False  # A step cannot be executed until it has been configured.
         self._icon = QtGui.QImage(':/zincdatasource/images/zinc_data_icon.png')
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
@@ -46,33 +45,22 @@ class ZincDataSourceStep(WorkflowStepMountPoint):
         d.setModal(True)
         if d.exec_():
             self._state = d.getState()
-            self.serialize(self._location)
 
         self._configured = d.validate()
         if self._configured and self._configuredObserver:
             self._configuredObserver()
 
     def getIdentifier(self):
-        return self._state._identifier
+        return self._state.identifier()
 
     def setIdentifier(self, identifier):
-        self._state._identifier = identifier
+        self._state.set_identifier(identifier)
 
-    def serialize(self, location):
-        configuration_file = os.path.join(location, getConfigFilename(self._state._identifier))
-        s = QtCore.QSettings(configuration_file, QtCore.QSettings.IniFormat)
-        s.beginGroup('state')
-        s.setValue('identifier', self._state._identifier)
-        s.setValue('data', self._state._dataLocation)
-        s.endGroup()
+    def serialize(self):
+        return self._state.serialize()
 
-    def deserialize(self, location):
-        configuration_file = os.path.join(location, getConfigFilename(self._state._identifier))
-        s = QtCore.QSettings(configuration_file, QtCore.QSettings.IniFormat)
-        s.beginGroup('state')
-        self._state._identifier = s.value('identifier', '')
-        self._state._dataLocation = s.value('data', '')
-        s.endGroup()
+    def deserialize(self, string):
+        self._state.deserialize(string)
         d = ConfigureDialog(self._state)
         self._configured = d.validate()
 
