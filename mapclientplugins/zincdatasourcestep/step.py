@@ -1,7 +1,7 @@
-'''
+"""
 MAP Client, a program to generate detailed musculoskeletal models for OpenSim.
     Copyright (C) 2012  University of Auckland
-    
+
 This file is part of MAP Client. (http://launchpad.net/mapclient)
 
     MAP Client is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 
     You should have received a copy of the GNU General Public License
     along with MAP Client.  If not, see <http://www.gnu.org/licenses/>..
-'''
+"""
 from PySide6 import QtGui
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
@@ -26,10 +26,10 @@ from mapclientplugins.zincdatasourcestep.zincdatadata import ZincDataData
 
 
 class ZincDataSourceStep(WorkflowStepMountPoint):
-    '''
+    """
     Skeleton step which is intended to be used as a starting point
     for new steps.
-    '''
+    """
 
     def __init__(self, location):
         super(ZincDataSourceStep, self).__init__('Zinc Data Source', location)
